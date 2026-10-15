@@ -74,8 +74,12 @@ interface types {
     record series-page {
         /// List of series on the current page.
         series: list<series>,
-        /// Indicates if there is a next page of results.
-        has-next-page: bool
+        /// The continuation token to use to fetch the next page. If this is
+        /// `none`, there are no more series to fetch.
+        ///
+        /// The token is opaque and must be passed back unchanged to `search`
+        /// with the same `query` and `filters`.
+        cursor: option<string>
     }
 
     /// Represents an individual filter used in search queries.
@@ -140,8 +144,12 @@ interface types {
     record episodes-page {
         /// List of episodes on the current page.
         episodes: list<episode>,
-        /// Indicates if there is a next page of results.
-        has-next-page: bool
+        /// The continuation token to use to fetch the next page. If this is
+        /// `none`, there are no more episodes to fetch.
+        ///
+        /// The token is opaque and must be passed back unchanged to
+        /// `get-series-episodes` with the same `series-id`.
+        cursor: option<string>
     }
 
     /// Represents the resolution of a video stream with height and width.
