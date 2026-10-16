@@ -1,4 +1,4 @@
-package nero:portal@0.1.0-draft;
+package nero:portal@0.1.0-draft-2026-10-15;
 
 world imports {
     import interaction;
